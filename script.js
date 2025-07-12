@@ -275,7 +275,7 @@ const cardData = [
      Beraber o kadar fazla zaman geçirmiştik ki yarım günüm senleydi (simdi farklı sanki) az kalsın pankartı yetiştiremiyoduk. ONU BUNU GEÇ PANKART YAPTIK LAN.DEHŞET 
      BİR PANKARTIMIZ VARDI.Sonra o otobüs yolculuğu bile değerliydi ama onun gecesi mükemmeldi.Ama en komik olan umayın yakamdan tutup beni kenara çekmesiydi.Aslan 
      kardeşim umay seviliyon 🫶`, 
-    music: 'music/her.mp3' 
+    music: 'music/Her.mp3' 
   },
   { 
     file: 'blend.jpeg',     
