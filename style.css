@@ -1,0 +1,1161 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(-45deg, #99ccff, #ffb3d9, #ff99cc, #e6b3ff);
+  background-size: 300% 300%;
+  animation: gradient 8s ease infinite;
+  color: #222;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Yıldızlı arka plan */
+.stars, .twinkling {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+.stars {
+  background: transparent url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png') repeat top center;
+  opacity: 0.3;
+  animation: moveStars 200s linear infinite;
+}
+@keyframes moveStars {
+  0% {background-position: 0 0;}
+  100% {background-position: 10000px 5000px;}
+}
+.twinkling {
+  background: transparent url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/twinkling.png') repeat top center;
+  opacity: 0.2;
+  animation: moveTwinkling 300s linear infinite;
+}
+@keyframes moveTwinkling {
+  0% {background-position: 0 0;}
+  100% {background-position: -10000px 5000px;}
+}
+
+/* Menü Butonu */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 5px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.menu-toggle:hover span {
+  background: #e73c7e;
+}
+
+/* Menü */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 999;
+  transition: left 0.3s ease;
+  padding-top: 80px;
+}
+
+.menu.active {
+  left: 0;
+}
+
+.menu-content {
+  padding: 20px;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  margin: 10px 0;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(10px);
+}
+
+.menu-item.active {
+  background: linear-gradient(135deg, #e73c7e, #23a6d5);
+  box-shadow: 0 4px 15px rgba(231, 60, 126, 0.3);
+}
+
+/* Sayfa Geçişleri */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-top: 20px;
+}
+
+.page.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 2rem 1rem 1rem 1rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  animation: slideDown 1s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+header h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+main#content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  min-height: 60vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+/* Geri sayım */
+#countdown-section {
+  background: rgba(255,255,255,0.12);
+  border-radius: 18px;
+  margin: 2rem auto 1.5rem auto;
+  max-width: 600px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+.countdown-item span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #e73c7e;
+}
+.countdown-item label {
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 0.2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Toplam Süre */
+.total-time {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.total-time h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.total-breakdown {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background: rgba(255,255,255,0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.total-breakdown span {
+  color: #e73c7e;
+  font-weight: bold;
+}
+
+/* Dönen kartlar */
+.card-container {
+  perspective: 1200px;
+  display: inline-block;
+  margin: 0;
+  flex: 0 0 auto;
+}
+.flip-card {
+  width: 350px;
+  height: 450px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(.4,2,.6,1);
+  cursor: pointer;
+}
+.card-container.flipped .flip-card {
+  transform: rotateY(180deg);
+}
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  overflow: hidden;
+  background: rgba(255,255,255,0.13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card-front img, .card-front video {
+  width: 95%;
+  max-height: 280px;
+  border-radius: 12px;
+  margin-top: 1.2rem;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+}
+
+/* Blend fotoğrafı için özel stil */
+.card-front img[src*="blend.jpeg"] {
+  object-position: center 30%;
+}
+
+.card-front p {
+  margin: 1rem 0 0 0;
+  color: #fff;
+  font-size: 1.1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.card-back {
+  background: linear-gradient(135deg, #e73c7e 60%, #23a6d5 100%);
+  color: #fff;
+  transform: rotateY(180deg);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+.card-back .back-text {
+  font-size: 1.1rem;
+  font-family: 'Poppins', Arial, sans-serif;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 1rem;
+  text-align: justify;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-height: 280px;
+  color: #fff;
+  word-wrap: break-word;
+  white-space: normal;
+  text-indent: 0;
+  margin: 0;
+}
+.card-back .audio-btn {
+  background: #fff;
+  color: #e73c7e;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.card-back .audio-btn:hover {
+  background: #e73c7e;
+  color: #fff;
+}
+
+/* Doğum Günü Sayfası */
+#birthday-message {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.birthday-letter {
+  background: rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  border: 1px solid rgba(255,255,255,0.18);
+  text-align: center;
+}
+
+.birthday-content h2 {
+  color: #fff;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.birthday-date {
+  color: #e73c7e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.birthday-text {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: left;
+  background: rgba(255,255,255,0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* 100 Neden Sayfası */
+#reasons-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.reasons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.reason-item {
+  background: rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: transform 0.3s ease;
+}
+
+.reason-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.reason-number {
+  background: linear-gradient(135deg, #e73c7e, #23a6d5);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.reason-text {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+footer {
+  background: #a18cd1;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  main#content {
+    gap: 2rem;
+    padding: 0 0.5rem;
+  }
+  .card-container { margin: 0; }
+  .flip-card { width: 90vw; max-width: 350px; height: 450px; }
+  .letter {
+    width: 320px;
+    height: 220px;
+  }
+  .letter.opened .letter-back {
+    width: 95%;
+    height: 95%;
+    padding: 1.5rem;
+  }
+  .special-message {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  #countdown {
+    gap: 1rem;
+  }
+  .countdown-item span {
+    font-size: 1.8rem;
+  }
+  .countdown-item label {
+    font-size: 0.9rem;
+  }
+  .total-breakdown {
+    font-size: 1rem;
+  }
+  .reasons-container {
+    grid-template-columns: 1fr;
+  }
+  .menu {
+    width: 200px;
+    left: -200px;
+  }
+  .menu.active {
+    left: 0;
+  }
+}
+
+/* Mektup Animasyonu */
+#message-section {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.letter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.letter {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  transform-style: preserve-3d;
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  z-index: 10;
+  margin: 0 auto;
+}
+
+.letter.opened {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: none;
+  z-index: 9999;
+  border-radius: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.letter.opened .letter-front {
+  display: none;
+}
+
+.letter.opened .letter-back {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 90%;
+  max-height: 600px;
+  transform: none;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.letter-front, .letter-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Zarf Tasarımı */
+.letter-front {
+  background: linear-gradient(135deg, #ff99cc, #cc66ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.envelope {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #ff99cc;
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  transform-origin: bottom;
+  animation: flap 2s ease-in-out infinite;
+}
+
+@keyframes flap {
+  0%, 100% { transform: rotateX(0deg); }
+  50% { transform: rotateX(10deg); }
+}
+
+.envelope-body {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.stamp {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.5rem;
+}
+
+.address {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: bold;
+}
+
+.click-me {
+  color: #fff;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  animation: pulse 2s ease-in-out infinite;
+  position: relative;
+  width: 100%;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Mektup İçeriği */
+.letter-back {
+  background: #fff;
+  transform: rotateY(180deg);
+  padding: 2rem;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.letter-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.letter-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ff99cc;
+  padding-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.letter-header h3 {
+  color: #ff99cc;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.date {
+  color: #999;
+  font-size: 1.2rem;
+}
+
+.letter-text {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+}
+
+.letter-music {
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  border: 2px solid #ff99cc;
+  position: relative;
+}
+
+.music-control {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.music-toggle {
+  background: linear-gradient(135deg, #ff99cc, #cc66ff);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.music-toggle.playing {
+  background: linear-gradient(135deg, #cc66ff, #ff99cc);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.letter-music h4 {
+  color: #ff99cc;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.youtube-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.youtube-container.hidden-audio {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.music-note {
+  color: #ff99cc;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.5rem 0 0 0;
+  opacity: 0.8;
+}
+
+.youtube-container iframe {
+  border-radius: 10px;
+}
+
+.special-message {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #333;
+  text-align: justify;
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.letter-footer {
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.close-letter {
+  background: linear-gradient(135deg, #ff99cc, #cc66ff);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.close-letter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+} 
+
+/* Masaüstü için */
+.letter.opened .letter-back {
+  width: 98vw;
+  max-width: 900px;
+  height: 95vh;
+  max-height: 95vh;
+  padding: 2.5rem 2rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.letter-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.letter-text {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 2;
+  padding-right: 0.5rem;
+}
+
+/* Mobil için */
+@media (max-width: 700px) {
+  .letter.opened .letter-back {
+    width: 99vw;
+    max-width: 99vw;
+    height: 99vh;
+    max-height: 99vh;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+  .letter-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .letter-text {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    padding-right: 0.2rem;
+  }
+} 
+
+/* Doğum Günü Mektup Stilleri */
+#birthday-message {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.birthday-letter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.birthday-letter {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  transform-style: preserve-3d;
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  z-index: 10;
+  margin: 0 auto;
+}
+
+.birthday-letter.opened {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: none;
+  z-index: 9999;
+  border-radius: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.birthday-letter.opened .birthday-letter-front {
+  display: none;
+}
+
+.birthday-letter.opened .birthday-letter-back {
+  position: relative;
+  width: 98vw;
+  max-width: 900px;
+  height: 95vh;
+  max-height: 95vh;
+  padding: 2.5rem 2rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: none;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.birthday-letter-front, .birthday-letter-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Doğum Günü Zarf Tasarımı */
+.birthday-letter-front {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.birthday-envelope {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.birthday-envelope-flap {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #ff6b9d;
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  transform-origin: bottom;
+  animation: birthdayFlap 2s ease-in-out infinite;
+}
+
+@keyframes birthdayFlap {
+  0%, 100% { transform: rotateX(0deg); }
+  50% { transform: rotateX(10deg); }
+}
+
+.birthday-envelope-body {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.birthday-stamp {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.5rem;
+}
+
+.birthday-address {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: bold;
+}
+
+.birthday-click-me {
+  color: #fff;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  animation: birthdayPulse 2s ease-in-out infinite;
+  position: relative;
+  width: 100%;
+}
+
+@keyframes birthdayPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Doğum Günü Mektup İçeriği */
+.birthday-letter-back {
+  background: #fff;
+  transform: rotateY(180deg);
+  padding: 2rem;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.birthday-letter-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.birthday-letter-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ff6b9d;
+  padding-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.birthday-letter-header h2 {
+  color: #ff6b9d;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.birthday-date {
+  color: #c44569;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.birthday-letter-text {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 2;
+  padding-right: 0.5rem;
+}
+
+.birthday-letter-music {
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  border: 2px solid #ff6b9d;
+  position: relative;
+}
+
+.birthday-music-control {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.birthday-music-toggle {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.birthday-music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.birthday-music-toggle.playing {
+  background: linear-gradient(135deg, #c44569, #ff6b9d);
+  animation: birthdayPulse 2s ease-in-out infinite;
+}
+
+.birthday-letter-footer {
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.close-birthday-letter {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.close-birthday-letter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Mobil için doğum günü mektubu */
+@media (max-width: 700px) {
+  .birthday-letter.opened .birthday-letter-back {
+    width: 99vw;
+    max-width: 99vw;
+    height: 99vh;
+    max-height: 99vh;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+  .birthday-letter-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .birthday-letter-text {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    padding-right: 0.2rem;
+  }
+} 
